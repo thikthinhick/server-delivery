@@ -1,8 +1,11 @@
 package com.example.fooddelivery.service;
 
+import com.example.fooddelivery.entity.RestaurantEntity;
 import com.example.fooddelivery.repository.RestaurantRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class RestaurantServiceImpl implements RestaurantService {
@@ -12,5 +15,8 @@ public class RestaurantServiceImpl implements RestaurantService {
         this.restaurantRepository = restaurantRepository;
     }
 
-
+    @Override
+    public List<RestaurantEntity> newestRestaurants(Pageable pageable) {
+        return restaurantRepository.findAllByOrderByCreatedTime(pageable);
+    }
 }
