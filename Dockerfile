@@ -1,4 +1,4 @@
-FROM openjdk:11.0-jdk
+FROM openjdk:17-oracle
 ARG JAR_FILE=target/*.jar
 COPY ${JAR_FILE} /usr/app/
 WORKDIR /usr/app/
